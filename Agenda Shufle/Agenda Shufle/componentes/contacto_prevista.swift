@@ -17,8 +17,10 @@ struct ContactoPrevista: View {
     
     
     var body: some View {
-        HStack(alignment: VerticalAlignment.center){
+        HStack(alignment: VerticalAlignment.center, spacing: 10){
+            
             Spacer()
+            
             VStack{
                 Image("Imagen")
                     .resizable()
@@ -28,18 +30,24 @@ struct ContactoPrevista: View {
                                                esquinas_redondeadas))
                     .background(Color.blue)
             }.background(Color.white)
+            
             Spacer()
-            VStack(alignment: HorizontalAlignment.leading){
+            
+            VStack(alignment: HorizontalAlignment.leading, spacing: 10){
                 Text(contacto_a_mostrar.nombre)
                 Text(contacto_a_mostrar.telefono)
-            }.background(Color.gray)
-                .frame(width: 150)
+            }
+            
+            .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.gray)
             
             Spacer()
             
         }
-        .frame(width: 250)
+        .frame(maxWidth: .infinity)
         .background(Color.red)
+        .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+        
         .onTapGesture {
             al_pulsar()
         }
