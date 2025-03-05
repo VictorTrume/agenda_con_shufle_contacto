@@ -13,7 +13,7 @@ struct ContactoPrevista: View {
     var contacto_a_mostrar: ContactoAgenda
     var al_pulsar: () -> Void = {print("No se ha implementado")}
     
-    let esquinas_redondeadas = CGSize(width: 55, height: 55)
+    let esquinas_redondeadas = CGSize(width: 20, height: 55)
     
     
     var body: some View {
@@ -25,10 +25,9 @@ struct ContactoPrevista: View {
                 Image("Imagen")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 65,alignment: .center)
-                    .clipShape(RoundedRectangle(cornerSize:
-                                               esquinas_redondeadas))
-                    .background(Color.blue)
+                    .frame(width: 100,alignment: .center)
+                    .clipShape(Circle())
+                    .background(Color.gray)
             }.background(Color.white)
             
             Spacer()
@@ -45,7 +44,8 @@ struct ContactoPrevista: View {
             
         }
         .frame(maxWidth: .infinity)
-        .background(Color.red)
+        .background(Color.gray)
+        //.clipShape(Rectangle())
         .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
         
         .onTapGesture {
