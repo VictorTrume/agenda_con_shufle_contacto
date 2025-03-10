@@ -18,7 +18,7 @@ struct Icono: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: tamaño, height: tamaño)
             .padding(padding)
-            .background(Color.white)
+            //.background(Color.white)
     }
 }
 

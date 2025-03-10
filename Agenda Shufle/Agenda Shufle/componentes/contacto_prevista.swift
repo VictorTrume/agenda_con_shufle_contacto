@@ -8,6 +8,7 @@
 import SwiftUI
 
 let contacto_prueba =  ContactoAgenda(nombre: "Pacalagranpacaosi", telefono: "12345")
+    
 
 struct ContactoPrevista: View {
     var contacto_a_mostrar: ContactoAgenda
@@ -27,24 +28,28 @@ struct ContactoPrevista: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100,alignment: .center)
                     .clipShape(Circle())
-                    .background(Color.gray)
+                    .background(Color.black.opacity(1))
             }.background(Color.white)
             
             Spacer()
             
             VStack(alignment: HorizontalAlignment.leading, spacing: 10){
                 Text(contacto_a_mostrar.nombre)
+                    .foregroundColor(.white)
+                    .font(.system(size: 20))
+                    .bold()
                 Text(contacto_a_mostrar.telefono)
+                    .foregroundColor(.white)
             }
             
             .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.gray)
+                .background(Color.black.opacity(1))
             
             Spacer()
             
         }
         .frame(maxWidth: .infinity)
-        .background(Color.gray)
+        .background(Color.black.opacity(1))
         //.clipShape(Rectangle())
         .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
         
