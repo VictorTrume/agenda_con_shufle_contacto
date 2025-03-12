@@ -29,7 +29,9 @@ struct ContactoPrevista: View {
                     .frame(width: 100,alignment: .center)
                     .clipShape(Circle())
                     .background(Color.black.opacity(1))
+                    
             }.background(Color.white)
+            
             
             Spacer()
             
@@ -37,9 +39,11 @@ struct ContactoPrevista: View {
                 Text(contacto_a_mostrar.nombre)
                     .foregroundColor(.white)
                     .font(.system(size: 20))
+                    .shadow(color: .white, radius: 1)
                     .bold()
                 Text(contacto_a_mostrar.telefono)
                     .foregroundColor(.white)
+                    .shadow(color: .white, radius: 1)
             }
             
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -52,10 +56,11 @@ struct ContactoPrevista: View {
         .background(Color.black.opacity(1))
         //.clipShape(Rectangle())
         .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-        
+        /*
         .onTapGesture {
             al_pulsar()
         }
+         */
               
     }
 }

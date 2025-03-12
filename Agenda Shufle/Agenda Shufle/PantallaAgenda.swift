@@ -33,6 +33,7 @@ enum PantallasDisponibles: String, Identifiable{
     
     var id: String {rawValue}
     
+    
 }
  
 
@@ -57,26 +58,54 @@ struct PantallaAgenda: View {
     @State var pantalla_a_mostrar:PantallasDisponibles?
     
     var body: some View {
-        
-        ScrollView{
-            Text("Lista de Contactos")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .bold()
-                .foregroundColor(.white.opacity(0.9))
-            VStack(spacing:10){
-                ForEach(contactos_actuales){ contacto in
-                    //Text("\(contacto.nombre)")
-                    ContactoPrevista(contacto_a_mostrar: contacto, al_pulsar:
-                        {print("Te envio saludos \(contacto.nombre) desde la pantalla de agenda")})
+     
+        NavigationStack{
+            ScrollView{
+                Text("Lista de Contactos")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .shadow(color: .white, radius: 1)
+                    .bold()
+                    
+                
+                    .foregroundColor(.white.opacity(0.9))
+                VStack(spacing:10){
+                    ForEach(contactos_actuales){ contacto in
+                        NavigationLink{
+                            
+                            
+                                Text("Mi contacto es")
+                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                    .shadow(color: .white, radius: 1)
+                                    .bold()
+                                    .background(Color.black.opacity(0.8))
+                              
+                                ContactoPrevista(contacto_a_mostrar: contacto)
+                                    .padding(25)
+                                    .shadow(color: .white, radius: 2)
+                                    .background(Color.black.opacity(0.8))
+                   
+                                    
+                            
+                          
+                            
+                        } 
+                        
+                        label :{
+                            ContactoPrevista(contacto_a_mostrar: contacto)
+                        }
+                        
+                    }
+                    
                 }
+                
+                .frame(alignment: Alignment.center)
+                .padding(30)
+                .shadow(color: .white, radius: 4)
+                //.background(Color.black.opacity(0.5))
             }
             
-            .frame(alignment: Alignment.center)
-            .padding(30)
-            //.background(Color.black.opacity(0.5))
-            
+            .background(Color.black.opacity(0.8))
         }
-        .background(Color.black.opacity(0.7))
         
         HStack(alignment: VerticalAlignment.center, spacing: 25){
             ZStack{
@@ -84,6 +113,7 @@ struct PantallaAgenda: View {
                     .frame(width: 100)
                     .tint(Color.red)
                     .foregroundColor(Color.black)
+                    .shadow(color: .white, radius: 5)
                 Rectangle()
                     .frame(width: 65, height: 65)
                     .foregroundColor(Color.black
@@ -96,6 +126,7 @@ struct PantallaAgenda: View {
                 //.offset(x: 0, y: -25)
                 
             }
+            
             .padding(15)
             .onTapGesture {
                 print("Aun me falta esta parte")
@@ -108,6 +139,7 @@ struct PantallaAgenda: View {
                     .frame(width: 100)
                     .tint(Color.red)
                     .foregroundColor(Color.black)
+                    .shadow(color: .white, radius: 5)
                 Rectangle()
                     .frame(width: 65, height: 65)
                     .foregroundColor(Color.black)
@@ -118,16 +150,21 @@ struct PantallaAgenda: View {
                 //.offset(x: 0, y: -25)
                 
             }
+            
             .padding(15)
             .onTapGesture {
                 print("Lanzar un intent para lanzar la llamada")
                 pantalla_a_mostrar = PantallasDisponibles.pantalla_aleatorio
             }
+            
         }
-        .background(Color.black.opacity(0.8))
+        .background(Color.black.opacity(0.9))
+        
+
         .sheet(isPresented: $mostrar_pantalla_agregar_contacto) {
             
         }
+        
         .sheet(item: $pantalla_a_mostrar){
             pantalla in 
             switch(pantalla){
@@ -144,6 +181,7 @@ struct PantallaAgenda: View {
             )
             case.pantalla_aleatorio:
                 Text("Adios mundo")
+                
             }
         }
         
