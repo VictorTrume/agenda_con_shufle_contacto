@@ -11,33 +11,44 @@ var contacto_alterno = ContactoAgenda(nombre: "Telefonico", telefono: "656123456
 
 struct pantalla_del_ganador: View {
     var contacto_a_molestar: ContactoAgenda
-    
     var body: some View {
+        Spacer()
+        
         ZStack{
-            
+            Color.black.opacity(0.8)
             Circle()
-                .frame(width: 250)
+                .frame(width: 0)
                 .background(Color.black.opacity(0.8))
+          
             Image("Imagen")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150)
+                .frame(width: 300)
+                .shadow(color: .white, radius: 20)
+            
+            
         }
-       
+        Spacer()
+       Spacer()
+      
         
         Text(contacto_a_molestar.nombre)
             .foregroundColor(.white)
-            .font(.system(size: 20))
+            .font(.system(size: 40))
             .shadow(color: .white, radius: 1)
             .bold()
             .background(Color.black.opacity(0.8))
+      
         Text(contacto_a_molestar.telefono)
             .foregroundColor(.white)
             .font(.system(size: 20))
             .shadow(color: .white, radius: 1)
             .bold()
             .background(Color.black.opacity(0.8))
+        Spacer()
+        Spacer()
     }
+
 }
 
 #Preview {
