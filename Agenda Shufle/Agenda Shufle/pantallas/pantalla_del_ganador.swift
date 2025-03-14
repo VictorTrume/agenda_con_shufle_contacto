@@ -14,9 +14,11 @@ struct pantalla_del_ganador: View {
     
     var body: some View {
         ZStack{
-            Circle().foregroundColor(Color.red)
+            
+            Circle()
                 .frame(width: 250)
-            Image(systemName: "plus")
+                .background(Color.black.opacity(0.8))
+            Image("Imagen")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 150)
@@ -24,7 +26,17 @@ struct pantalla_del_ganador: View {
        
         
         Text(contacto_a_molestar.nombre)
+            .foregroundColor(.white)
+            .font(.system(size: 20))
+            .shadow(color: .white, radius: 1)
+            .bold()
+            .background(Color.black.opacity(0.8))
         Text(contacto_a_molestar.telefono)
+            .foregroundColor(.white)
+            .font(.system(size: 20))
+            .shadow(color: .white, radius: 1)
+            .bold()
+            .background(Color.black.opacity(0.8))
     }
 }
 

@@ -56,6 +56,7 @@ struct PantallaAgenda: View {
     ]
     
     @State var pantalla_a_mostrar:PantallasDisponibles?
+    @State private var contacto_ganador: ContactoAgenda? = nil
     
     var body: some View {
      
@@ -153,8 +154,11 @@ struct PantallaAgenda: View {
             
             .padding(15)
             .onTapGesture {
-                print("Lanzar un intent para lanzar la llamada")
-                pantalla_a_mostrar = PantallasDisponibles.pantalla_aleatorio
+                if let contacto_seleccionado = contactos_actuales.randomElement(){
+                    contacto_ganador = contacto_seleccionado
+                    
+                    pantalla_a_mostrar = PantallasDisponibles.pantalla_aleatorio
+                }
             }
             
         }
@@ -180,7 +184,12 @@ struct PantallaAgenda: View {
                 }
             )
             case.pantalla_aleatorio:
-                Text("Adios mundo")
+                if let contacto = contacto_ganador {
+                    pantalla_del_ganador(contacto_a_molestar: contacto)
+                }
+                else{
+                    Text("No seleccionaste nada")
+                }
                 
             }
         }
